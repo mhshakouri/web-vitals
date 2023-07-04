@@ -17,7 +17,7 @@ declare module '@nuxt/schema' {
   interface NuxtConfig {
     ['googleAnalytics']?: { id?: string }
     ['webVitals']?: Partial<ModuleOptions>
-   }
+  }
 }
 
 export default defineNuxtModule({
@@ -60,7 +60,7 @@ export default defineNuxtModule({
         try {
           provider = resolveProvider(_provider.name, (options as any)[_provider.name])
           // eslint-disable-next-line no-console
-          console.info('[@nuxtjs/web-vitals] Auto detected provider:', provider.name)
+          console.info('[nuxtjs-web-vitals-inp] Auto detected provider:', provider.name)
           break
         } catch (err) {
           // Ignore error on auto detection
@@ -72,7 +72,7 @@ export default defineNuxtModule({
           provider = resolveProvider('log')
         } else {
           // eslint-disable-next-line no-console
-          console.warn('[@nuxtjs/web-vitals] Please define a provider to activate this module.')
+          console.warn('[nuxtjs-web-vitals-inp] Please define a provider to activate this module.')
           return
         }
       }

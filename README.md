@@ -10,20 +10,18 @@ This module will gather those metrics on each page view, and send them to a prov
 
 ```bash
 # yarn
-yarn add --dev @nuxtjs/web-vitals
+yarn add --dev nuxtjs-web-vitals-inp
 
 # npm
-npm install --save-dev @nuxtjs/web-vitals
+npm install --save-dev nuxtjs-web-vitals-inp
 ```
 
-Add `@nuxtjs/web-vitals` to the `modules` section of your `nuxt.config.js`
+Add `nuxtjs-web-vitals-inp` to the `modules` section of your `nuxt.config.js`
 
 ```javascript
 export default defineNuxtConfig({
-  modules: [
-    '@nuxtjs/web-vitals'
-  ]
-})
+  modules: ["nuxtjs-web-vitals-inp"],
+});
 ```
 
 :warning: If you are using Nuxt **< v2.9** you have to install the module as a `dependency` (no `--save-dev` or `--dev` flags). If you are Nuxt 2.9+ (but not Nuxt 3) you should add the module to `buildModules` instead of `modules`.
@@ -35,9 +33,9 @@ export default defineNuxtConfig({
   webVitals: {
     // provider: '', // auto detectd
     debug: false,
-    disabled: false
-  }
-})
+    disabled: false,
+  },
+});
 ```
 
 ## Providers
@@ -55,15 +53,14 @@ Either provide `GOOGLE_ANALYTICS_ID` environement variable or set inside `nuxt.c
 ```js
 export default defineNuxtConfig({
   webVitals: {
-    ga: { id: 'UA-XXXXXXXX-X' }
-  }
-})
+    ga: { id: "UA-XXXXXXXX-X" },
+  },
+});
 ```
 
 Behavior > Events > Overview > Event Category > Event Action
 
 ![Events Actions](/assets/event-action.png)
-
 
 _Report WebVitals to GTM_
 
@@ -72,11 +69,10 @@ Create a GTM property and add the tag manager to your site.
 ```js
 export default defineNuxtConfig({
   webVitals: {
-    gtm: {}
-  }
-})
+    gtm: {},
+  },
+});
 ```
-
 
 ### Vercel Analytics
 
@@ -93,11 +89,11 @@ Output metrics to the console insead of sending them to a remote provider
 ```js
 export default defineNuxtConfig({
   webVitals: {
-    provider: 'log',
+    provider: "log",
     debug: true, // debug enable metrics reporting on dev environments
-    disabled: false
-  }
-})
+    disabled: false,
+  },
+});
 ```
 
 :warning: this provider does not send WebVitals trough network, issues with navigator extensions can not be deteced with this method.
@@ -119,28 +115,28 @@ Example body:
 
 ```js
 export default defineNuxtConfig({
-  href: 'http://localhost:3000/',
-  name: 'LCP',
+  href: "http://localhost:3000/",
+  name: "LCP",
   value: 303.599,
-  rating: 'good',
+  rating: "good",
   delta: 303.599,
   entries: [
     {
-      name: '',
-      entryType: 'largest-contentful-paint',
+      name: "",
+      entryType: "largest-contentful-paint",
       startTime: 303.599,
       duration: 0,
       size: 5698,
       renderTime: 303.599,
       loadTime: 0,
       firstAnimatedFrameTime: 0,
-      id: '',
-      url: ''
-    }
+      id: "",
+      url: "",
+    },
   ],
-  id: 'v3-1669725914225-9792921995831',
-  navigationType: 'reload'
-})
+  id: "v3-1669725914225-9792921995831",
+  navigationType: "reload",
+});
 ```
 
 ### License

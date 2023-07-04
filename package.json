@@ -51,6 +51,6 @@
     "typescript": "^5.0.4"
   },
   "resolutions": {
-    "@nuxtjs/web-vitals": "link:."
+    "nuxtjs-web-vitals-inp": "link:."
   }
 }

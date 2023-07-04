@@ -4,14 +4,14 @@ export const PROVIDERS = [
     runtime: './runtime/providers/log',
     autoDetect: false,
     defaults: () => ({}),
-    validate: () => {}
+    validate: () => { }
   },
   {
     name: 'gtm',
     runtime: './runtime/providers/gtm',
     autoDetect: false,
     defaults: () => ({}),
-    validate: () => {}
+    validate: () => { }
   },
   {
     name: 'ga',
@@ -22,7 +22,7 @@ export const PROVIDERS = [
     }),
     validate ({ id }) {
       if (!id) {
-        throw new Error('[@nuxtjs/web-vitals] `googleAnalytics.id` is required for Google Analytics integration')
+        throw new Error('[nuxtjs-web-vitals-inp] `googleAnalytics.id` is required for Google Analytics integration')
       }
     }
   },
@@ -34,7 +34,7 @@ export const PROVIDERS = [
     }),
     validate ({ dsn }) {
       if (!dsn) {
-        throw new Error('[@nuxtjs/web-vitals] `vercel.dsn` or `VERCEL_ANALYTICS_ID` environment is required for Vercel integration')
+        throw new Error('[nuxtjs-web-vitals-inp] `vercel.dsn` or `VERCEL_ANALYTICS_ID` environment is required for Vercel integration')
       }
     }
   },
@@ -44,7 +44,7 @@ export const PROVIDERS = [
     defaults: () => ({}),
     validate ({ url }) {
       if (!url) {
-        throw new Error('[@nuxtjs/web-vitals] api.url is required for API integration')
+        throw new Error('[nuxtjs-web-vitals-inp] api.url is required for API integration')
       }
     }
   }
