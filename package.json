@@ -1,6 +1,6 @@
 {
-  "name": "@nuxtjs/web-vitals-inp",
-  "version": "0.3.3",
+  "name": "nuxtjs-web-vitals-inp",
+  "version": "0.1.1",
   "description": "Web Vitals for Nuxt.js",
   "keywords": [
     "nuxt",
