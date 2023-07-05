@@ -13,13 +13,13 @@ export async function webVitals ({ route, options, sendToAnalytics }) {
   // }
 
   try {
-    const { getCLS, getFID, getLCP, getTTFB, getFCP, getINP } = await import('web-vitals').then((r: any) => r.default || r)
-    getFID(metric => sendToAnalytics(context, metric, options))
-    getTTFB(metric => sendToAnalytics(context, metric, options))
-    getLCP(metric => sendToAnalytics(context, metric, options))
-    getCLS(metric => sendToAnalytics(context, metric, options))
-    getFCP(metric => sendToAnalytics(context, metric, options))
-    getINP(metric => sendToAnalytics(context, metric, options))
+    const { onCLS, onFID, onLCP, onTTFB, onFCP, onINP } = await import('web-vitals').then((r: any) => r.default || r)
+    onFID(metric => sendToAnalytics(context, metric, { ...options, reportAllChanges: true }))
+    onTTFB(metric => sendToAnalytics(context, metric, { ...options, reportAllChanges: true }))
+    onLCP(metric => sendToAnalytics(context, metric, { ...options, reportAllChanges: true }))
+    onCLS(metric => sendToAnalytics(context, metric, { ...options, reportAllChanges: true }))
+    onFCP(metric => sendToAnalytics(context, metric, { ...options, reportAllChanges: true }))
+    onINP(metric => sendToAnalytics(context, metric, { ...options, reportAllChanges: true }))
   } catch (err) {
     logError(err)
   }
