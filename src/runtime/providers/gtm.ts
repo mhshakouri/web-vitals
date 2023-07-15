@@ -27,6 +27,11 @@ export function sendToAnalytics ({ fullPath, href }, metric, options: Options) {
       delta: metric.delta,
       valueRounded: metric.valueRounded,
       deltaRounded: metric.deltaRounded,
+      metric_rating: metric.rating,
+      debug_target: metric.debugTarget,
+      debug_event: metric.attribution ? metric.attribution.eventType || '' : '',
+      debug_timing: metric.attribution ? metric.attribution.loadState || '' : '',
+      event_time: metric.attribution ? metric.attribution.largestShiftTime || (metric.attribution.lcpEntry && metric.attribution.lcpEntry.startTime) || metric.attribution.eventTime || '' : '',
       speed: getConnectionSpeed()
     }
   }
