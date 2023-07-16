@@ -52,6 +52,12 @@ export function sendToAnalytics ({ fullPath, href }, metric, options: Options) {
 
   if (options.debug) {
     logDebug(metric.name, JSON.stringify(event, null, 2))
+    // eslint-disable-next-line no-console
+    console.log('[nuxt vitals]', metric.name, metric.value, { fullPath, href }, {
+      context: { fullPath, href },
+      metric,
+      options
+    })
   }
 
   if (!window.dataLayer) {
