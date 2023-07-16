@@ -13,7 +13,7 @@ export async function webVitals ({ route, options, sendToAnalytics }) {
   // }
 
   try {
-    const { onCLS, onFID, onLCP, onTTFB, onFCP, onINP } = await import('web-vitals').then((r: any) => r.default || r)
+    const { onCLS, onFID, onLCP, onTTFB, onFCP, onINP } = await import('web-vitals/attribution').then((r: any) => r.default || r)
     onFID(metric => sendToAnalytics(context, metric, { ...options, reportAllChanges: true }))
     onTTFB(metric => sendToAnalytics(context, metric, { ...options, reportAllChanges: true }))
     onLCP(metric => sendToAnalytics(context, metric, { ...options, reportAllChanges: true }))

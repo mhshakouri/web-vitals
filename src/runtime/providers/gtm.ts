@@ -11,11 +11,6 @@ export interface Options {
 }
 
 export function sendToAnalytics ({ fullPath, href }, metric, options: Options) {
-  if (!window.dataLayer) {
-    logError('window.dataLayer is undefined, probably GTM is not installed')
-    return
-  }
-
   const rating = metric.rating
 
   const attribution = metric.attribution
@@ -57,6 +52,11 @@ export function sendToAnalytics ({ fullPath, href }, metric, options: Options) {
 
   if (options.debug) {
     logDebug(metric.name, JSON.stringify(event, null, 2))
+  }
+
+  if (!window.dataLayer) {
+    logError('window.dataLayer is undefined, probably GTM is not installed')
+    return
   }
 
   window.dataLayer.push(event)
