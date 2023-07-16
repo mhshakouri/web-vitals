@@ -16,6 +16,25 @@ export function sendToAnalytics ({ fullPath, href }, metric, options: Options) {
     return
   }
 
+  const rating = metric.rating
+
+  const attribution = metric.attribution
+
+  const debugTarget = attribution ? attribution.largestShiftTarget || attribution.element || attribution.eventTarget || '' : '(not set)'
+
+  let valueRounded
+  if (metric.valueRounded && metric.valueRounded.length) {
+    valueRounded = metric.valueRounded
+  } else {
+    valueRounded = Math.round(metric.name === 'CLS' ? metric.value * 1000 : metric.value)
+  }
+  let deltaRounded
+  if (metric.deltaRounded && metric.deltaRounded.length) {
+    deltaRounded = metric.deltaRounded
+  } else {
+    deltaRounded = Math.round(metric.name === 'CLS' ? metric.delta * 1000 : metric.delta)
+  }
+
   const event = {
     event: 'webVitals',
     webVitalsMeasurement: {
@@ -25,13 +44,13 @@ export function sendToAnalytics ({ fullPath, href }, metric, options: Options) {
       id: metric.id,
       value: metric.value,
       delta: metric.delta,
-      valueRounded: metric.valueRounded || Math.round(metric.name === 'CLS' ? metric.value * 1000 : metric.value),
-      deltaRounded: metric.deltaRounded || Math.round(metric.name === 'CLS' ? metric.delta * 1000 : metric.delta),
-      metric_rating: metric.rating,
-      debug_target: metric.debugTarget,
-      debug_event: metric.attribution ? metric.attribution.eventType || '' : '',
-      debug_timing: metric.attribution ? metric.attribution.loadState || '' : '',
-      event_time: metric.attribution ? metric.attribution.largestShiftTime || (metric.attribution.lcpEntry && metric.attribution.lcpEntry.startTime) || metric.attribution.eventTime || '' : '',
+      valueRounded,
+      deltaRounded,
+      metric_rating: rating,
+      debug_target: debugTarget,
+      debug_event: attribution ? attribution.eventType || '' : '',
+      debug_timing: attribution ? attribution.loadState || '' : '',
+      event_time: attribution ? attribution.largestShiftTime || (attribution.lcpEntry && attribution.lcpEntry.startTime) || attribution.eventTime || '' : '',
       speed: getConnectionSpeed()
     }
   }
