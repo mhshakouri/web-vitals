@@ -58,6 +58,17 @@ export function sendToAnalytics ({ fullPath, href }, metric, options: Options) {
       metric,
       options
     })
+    const name: string = metric.name
+    if (name.toLocaleLowerCase() === 'inp') {
+      console.log('inp details, metric')
+      console.log(JSON.stringify(metric))
+      console.log('inp details, options')
+      console.log(JSON.stringify(options))
+      console.log('inp details, context')
+      console.log(JSON.stringify({ fullPath, href }))
+      console.log('inp details, event')
+      console.log(JSON.stringify(event, null, 2))
+    }
   }
 
   if (!window.dataLayer) {
